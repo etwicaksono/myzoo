@@ -1,12 +1,16 @@
 package com.etwicaksono.myzoo.ui.activity.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.etwicaksono.myzoo.R
+import androidx.appcompat.app.AppCompatActivity
+import com.etwicaksono.myzoo.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
