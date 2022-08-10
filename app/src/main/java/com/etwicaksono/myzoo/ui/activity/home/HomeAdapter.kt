@@ -3,10 +3,12 @@ package com.etwicaksono.myzoo.ui.activity.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.databinding.ItemRowAnimalBinding
+import com.etwicaksono.myzoo.helper.AnimalsDiffCallback
 import com.etwicaksono.myzoo.responses.ResponseAnimal
 
 class HomeAdapter:RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
@@ -30,5 +32,13 @@ class HomeAdapter:RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return listAnimals.size
+    }
+
+    fun setAnimalsListData(listAnimals:List<ResponseAnimal>){
+        val diffCallback=AnimalsDiffCallback(this.listAnimals,listAnimals)
+        val diffResult=DiffUtil.calculateDiff(diffCallback)
+        this.listAnimals.clear()
+        this.listAnimals.addAll(listAnimals)
+        diffResult.dispatchUpdatesTo(this)
     }
 }
