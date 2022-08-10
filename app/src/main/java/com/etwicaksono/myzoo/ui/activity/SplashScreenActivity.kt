@@ -1,8 +1,8 @@
-package com.example.myzoo.ui.activity
+package com.etwicaksono.myzoo.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myzoo.R
+import com.etwicaksono.myzoo.R
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

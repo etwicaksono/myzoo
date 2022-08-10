@@ -1,4 +1,4 @@
-package com.example.myzoo
+package com.etwicaksono.myzoo
 
 import org.junit.Test
 
