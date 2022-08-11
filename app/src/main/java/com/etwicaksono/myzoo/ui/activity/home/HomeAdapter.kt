@@ -1,5 +1,6 @@
 package com.etwicaksono.myzoo.ui.activity.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.databinding.ItemRowAnimalBinding
 import com.etwicaksono.myzoo.helper.AnimalsDiffCallback
 import com.etwicaksono.myzoo.responses.ResponseAnimal
+import com.etwicaksono.myzoo.ui.activity.detail.DetailActivity
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,7 +30,17 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         holder.binding.apply {
             tvName.text = listAnimals[position].name
             tvLatinName.text = listAnimals[position].latinName
-            Glide.with(ivAnimal.context).load(listAnimals[position].imageLink).into(ivAnimal)
+            Glide.with(ivAnimal.context).load(listAnimals[position].imageLink)
+                .placeholder(R.drawable.default_image).into(ivAnimal)
+        }
+
+        holder.binding.itemRowAnimal.setOnClickListener {
+            val detailIntent = Intent(it.context, DetailActivity::class.java)
+            detailIntent.apply {
+                putExtra("animalList", listAnimals)
+                putExtra("position", position)
+            }
+            it.context.startActivity(detailIntent)
         }
     }
 
