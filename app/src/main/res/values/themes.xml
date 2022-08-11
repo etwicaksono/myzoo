@@ -31,4 +31,14 @@
         <item name="android:textStyle">italic</item>
         <item name="android:textSize">23sp</item>
     </style>
+
+    <style name="text4" parent="Theme.MyZoo">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="text5" parent="Theme.MyZoo">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>

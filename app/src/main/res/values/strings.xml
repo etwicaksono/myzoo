@@ -2,4 +2,14 @@
     <string name="app_name">MyZoo</string>
     <string name="logo">logo</string>
     <string name="animal_picture">animal picture</string>
+    <string name="type">Type</string>
+    <string name="active_time">Active Time</string>
+    <string name="length_min">Length Min</string>
+    <string name="length_max">Length Max</string>
+    <string name="weight_min">Weight Min</string>
+    <string name="weight_max">Weight Max</string>
+    <string name="lifespan">Lifespan</string>
+    <string name="habitat">Habitat</string>
+    <string name="diet">Diet</string>
+    <string name="geo_range">Geo Range</string>
 </resources>
