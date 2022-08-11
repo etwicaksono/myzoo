@@ -28,7 +28,7 @@ class AnimalsListViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<ResponseAnimal>>, t: Throwable) {
-                Log.e(TAG, "getAnimals onFailur: ${t.message.toString()}")
+                Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
             }
 
         })

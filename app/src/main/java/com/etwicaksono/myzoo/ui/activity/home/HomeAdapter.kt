@@ -11,21 +11,23 @@ import com.etwicaksono.myzoo.databinding.ItemRowAnimalBinding
 import com.etwicaksono.myzoo.helper.AnimalsDiffCallback
 import com.etwicaksono.myzoo.responses.ResponseAnimal
 
-class HomeAdapter:RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
-    class ViewHolder(view:View):RecyclerView.ViewHolder(view) {
+class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemRowAnimalBinding.bind(view)
     }
 
     private val listAnimals = ArrayList<ResponseAnimal>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_row_animal,parent,false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_row_animal, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.apply {
-            tvName.text=listAnimals[position].name
-            tvLatinName.text=listAnimals[position].latinName
+            tvName.text = listAnimals[position].name
+            tvLatinName.text = listAnimals[position].latinName
             Glide.with(ivAnimal.context).load(listAnimals[position].imageLink).into(ivAnimal)
         }
     }
@@ -34,9 +36,9 @@ class HomeAdapter:RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         return listAnimals.size
     }
 
-    fun setAnimalsListData(listAnimals:List<ResponseAnimal>){
-        val diffCallback=AnimalsDiffCallback(this.listAnimals,listAnimals)
-        val diffResult=DiffUtil.calculateDiff(diffCallback)
+    fun setAnimalsListData(listAnimals: List<ResponseAnimal>) {
+        val diffCallback = AnimalsDiffCallback(this.listAnimals, listAnimals)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.listAnimals.clear()
         this.listAnimals.addAll(listAnimals)
         diffResult.dispatchUpdatesTo(this)
