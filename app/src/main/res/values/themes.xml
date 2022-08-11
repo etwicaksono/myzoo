@@ -14,9 +14,21 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="header_text1" parent="Theme.MyZoo">
+    <style name="text1" parent="Theme.MyZoo">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">23sp</item>
+    </style>
+
+    <style name="text2" parent="Theme.MyZoo">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">33sp</item>
+    </style>
+
+    <style name="text3" parent="Theme.MyZoo">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">italic</item>
         <item name="android:textSize">23sp</item>
     </style>
 </resources>
