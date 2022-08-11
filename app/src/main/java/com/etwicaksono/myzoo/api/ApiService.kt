@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("animals/rand/10")
-    fun getAllAnimals(): Call<List<ResponseAnimal>>
+    fun getAllAnimals(): Call<MutableList<ResponseAnimal>>
 }

@@ -15,24 +15,24 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AnimalsListViewModel : ViewModel() {
-    private val _listAnimals = MutableLiveData<List<ResponseAnimal>>()
-    val listAnimals: LiveData<List<ResponseAnimal>> = _listAnimals
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+    private val _listAnimals = MutableLiveData<MutableList<ResponseAnimal>>()
+    val listAnimals: LiveData<MutableList<ResponseAnimal>> = _listAnimals
+    private val _mainLoading = MutableLiveData<Boolean>()
+    val mainLoading: LiveData<Boolean> = _mainLoading
 
     fun getAnimals() {
-        _isLoading.value = true
-        api.getAllAnimals().enqueue(object : Callback<List<ResponseAnimal>> {
+        _mainLoading.value = true
+        api.getAllAnimals().enqueue(object : Callback<MutableList<ResponseAnimal>> {
             override fun onResponse(
-                call: Call<List<ResponseAnimal>>,
-                response: Response<List<ResponseAnimal>>
+                call: Call<MutableList<ResponseAnimal>>,
+                response: Response<MutableList<ResponseAnimal>>
             ) {
-                _isLoading.value=false
+                _mainLoading.value = false
                 _listAnimals.postValue(response.body())
             }
 
-            override fun onFailure(call: Call<List<ResponseAnimal>>, t: Throwable) {
-                _isLoading.value=false
+            override fun onFailure(call: Call<MutableList<ResponseAnimal>>, t: Throwable) {
+                _mainLoading.value = false
                 Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
             }
 

@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
                 )
             }
 
-            isLoading.observe(this@HomeActivity) {
+            mainLoading.observe(this@HomeActivity) {
                 binding.progressBar.visibility = if (it) View.VISIBLE else View.INVISIBLE
             }
 
