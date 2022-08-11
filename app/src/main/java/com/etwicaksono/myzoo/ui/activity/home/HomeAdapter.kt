@@ -30,8 +30,11 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         holder.binding.apply {
             tvName.text = listAnimals[position].name
             tvLatinName.text = listAnimals[position].latinName
-            Glide.with(ivAnimal.context).load(listAnimals[position].imageLink)
-                .placeholder(R.drawable.default_image).into(ivAnimal)
+
+            Glide.with(ivAnimal.context)
+                .load(listAnimals[position].imageLink)
+                .placeholder(R.drawable.default_image)
+                .into(ivAnimal)
         }
 
         holder.binding.itemRowAnimal.setOnClickListener {

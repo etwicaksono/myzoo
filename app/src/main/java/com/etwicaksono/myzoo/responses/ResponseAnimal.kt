@@ -1,7 +1,10 @@
 package com.etwicaksono.myzoo.responses
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ResponseAnimal(
 
 	@field:SerializedName("weight_min")
@@ -45,4 +48,4 @@ data class ResponseAnimal(
 
 	@field:SerializedName("length_max")
 	val lengthMax: String? = null
-)
+):Parcelable
