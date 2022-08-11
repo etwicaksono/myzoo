@@ -39,14 +39,14 @@ class HomeActivity : AppCompatActivity() {
             }
 
             mainLoading.observe(this@HomeActivity) {
-                binding.progressBar.visibility = if (it) View.VISIBLE else View.INVISIBLE
+                binding.centerProgressBar.visibility = if (it) View.VISIBLE else View.INVISIBLE
             }
 
             hasInternet(this@HomeActivity).observe(this@HomeActivity) {
                 if (it == false) {
                     Toast.makeText(this@HomeActivity, "Internet unavailable", Toast.LENGTH_LONG)
                         .show()
-                    binding.progressBar.visibility = View.INVISIBLE
+                    binding.centerProgressBar.visibility = View.INVISIBLE
                 }
             }
         }
