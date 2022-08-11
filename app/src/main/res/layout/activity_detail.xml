@@ -18,7 +18,7 @@
             android:contentDescription="@string/animal_picture"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_latin_name"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_animal"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Siamang" />
 
         <TextView
@@ -45,188 +45,187 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:stretchColumns="@string/length_max"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_latin_name">
+            app:layout_constraintTop_toBottomOf="@id/iv_animal">
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/type" />
 
                 <TextView
                     android:id="@+id/tv_type"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/active_time" />
 
                 <TextView
                     android:id="@+id/tv_active_time"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/length_min" />
 
                 <TextView
                     android:id="@+id/tv_length_min"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/length_max" />
 
                 <TextView
                     android:id="@+id/tv_length_max"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
-                    android:text="@string/weight_min"
-                    />
+                    android:text="@string/weight_min" />
 
                 <TextView
                     android:id="@+id/tv_weight_min"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/weight_max" />
 
                 <TextView
                     android:id="@+id/tv_weight_max"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/lifespan" />
 
                 <TextView
                     android:id="@+id/tv_lifespan"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/habitat" />
 
                 <TextView
                     android:id="@+id/tv_habitat"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/diet" />
 
                 <TextView
                     android:id="@+id/tv_diet"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
             <TableRow android:layout_marginTop="8dp">
 
                 <TextView
+                    style="@style/text4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/text4"
                     android:text="@string/geo_range" />
 
                 <TextView
                     android:id="@+id/tv_geo_range"
+                    style="@style/text5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text5"
                     tools:text="@tools:sample/lorem" />
             </TableRow>
 
