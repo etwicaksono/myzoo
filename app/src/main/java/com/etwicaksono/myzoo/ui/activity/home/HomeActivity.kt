@@ -1,6 +1,7 @@
 package com.etwicaksono.myzoo.ui.activity.home
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -33,6 +34,9 @@ class HomeActivity : AppCompatActivity() {
                 if (it != null && it.isNotEmpty()) homeAdapter.setAnimalsListData(
                     it
                 )
+            }
+            hasInternet(this@HomeActivity).observe(this@HomeActivity){
+                if(it==false) Toast.makeText(this@HomeActivity,"Internet unavailable",Toast.LENGTH_LONG).show()
             }
         }
     }
