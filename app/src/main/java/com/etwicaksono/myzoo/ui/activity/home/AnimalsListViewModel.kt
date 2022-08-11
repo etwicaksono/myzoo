@@ -17,17 +17,22 @@ import retrofit2.Response
 class AnimalsListViewModel : ViewModel() {
     private val _listAnimals = MutableLiveData<List<ResponseAnimal>>()
     val listAnimals: LiveData<List<ResponseAnimal>> = _listAnimals
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun getAnimals() {
+        _isLoading.value = true
         api.getAllAnimals().enqueue(object : Callback<List<ResponseAnimal>> {
             override fun onResponse(
                 call: Call<List<ResponseAnimal>>,
                 response: Response<List<ResponseAnimal>>
             ) {
+                _isLoading.value=false
                 _listAnimals.postValue(response.body())
             }
 
             override fun onFailure(call: Call<List<ResponseAnimal>>, t: Throwable) {
+                _isLoading.value=false
                 Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
             }
 
