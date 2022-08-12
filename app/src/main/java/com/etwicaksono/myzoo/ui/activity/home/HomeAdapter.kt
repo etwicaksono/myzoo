@@ -40,7 +40,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         holder.binding.itemRowAnimal.setOnClickListener {
             val detailIntent = Intent(it.context, DetailActivity::class.java)
             detailIntent.apply {
-                putExtra("animalList", listAnimals)
+                putParcelableArrayListExtra("animalList", listAnimals)
                 putExtra("position", position)
             }
             it.context.startActivity(detailIntent)
