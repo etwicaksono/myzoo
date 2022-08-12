@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
                     val lastVisiblePosition = layoutManager.findLastVisibleItemPosition()
                     val isLastPosition = countItem.minus(1) == lastVisiblePosition
 
-                    if (isLastPosition && !isLoading) {
+                    if (isLastPosition && !isLoading && dy > 0) {
                         viewModel.addMore()
                     }
                 }
