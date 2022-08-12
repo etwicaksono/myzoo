@@ -19,8 +19,10 @@ class AnimalsListViewModel : ViewModel() {
     val listAnimals: LiveData<MutableList<ResponseAnimal>> = _listAnimals
     private val _mainLoading = MutableLiveData<Boolean>()
     val mainLoading: LiveData<Boolean> = _mainLoading
+    private val _refreshLoading = MutableLiveData<Boolean>()
+    val refreshLoading: LiveData<Boolean> = _refreshLoading
 
-    fun getAnimals() {
+    fun init() {
         _mainLoading.value = true
         api.getAllAnimals().enqueue(object : Callback<MutableList<ResponseAnimal>> {
             override fun onResponse(
@@ -33,6 +35,26 @@ class AnimalsListViewModel : ViewModel() {
 
             override fun onFailure(call: Call<MutableList<ResponseAnimal>>, t: Throwable) {
                 _mainLoading.value = false
+                Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
+            }
+
+        })
+    }
+
+    fun addMore() {
+        _refreshLoading.value = true
+        api.getAllAnimals().enqueue(object : Callback<MutableList<ResponseAnimal>> {
+            override fun onResponse(
+                call: Call<MutableList<ResponseAnimal>>,
+                response: Response<MutableList<ResponseAnimal>>
+            ) {
+                _refreshLoading.value = false
+//                _listAnimals.value?.addAll(response.body() as MutableList<ResponseAnimal>)
+                _listAnimals.postValue(response.body())
+            }
+
+            override fun onFailure(call: Call<MutableList<ResponseAnimal>>, t: Throwable) {
+                _refreshLoading.value = false
                 Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
             }
 
