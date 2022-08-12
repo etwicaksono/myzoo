@@ -15,7 +15,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val animalList = intent.getSerializableExtra("animalList") as List<ResponseAnimal>?
+        val animalList = intent.getParcelableArrayListExtra<ResponseAnimal>("animalList")
         val position = intent.getIntExtra("position", 0)
         val animal = animalList?.get(position)
 

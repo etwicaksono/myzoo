@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.etwicaksono.myzoo.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -27,6 +28,18 @@ class HomeActivity : AppCompatActivity() {
             this.adapter = homeAdapter
             this.layoutManager = layoutManager
             addItemDecoration(itemDecoration)
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    val countItem = layoutManager.itemCount
+                    val lastVisiblePosition = layoutManager.findLastVisibleItemPosition()
+                    val isLastPosition = countItem.minus(1) == lastVisiblePosition
+
+                    if(isLastPosition){
+
+                    }
+                }
+            })
         }
 
         viewModel.apply {
