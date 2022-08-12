@@ -51,16 +51,12 @@ class AnimalsListViewModel : ViewModel() {
                 _refreshLoading.value = false
                 _listAnimals.postValue(response.body())
 
-//                _listAnimals.value?.addAll(response.body() as List<ResponseAnimal>)
-//                _listAnimals.value?.plus(response.body())
-//                _listAnimals.postValue(_listAnimals.value?.plus(response.body()) as MutableList<ResponseAnimal>?)
-//                val responseData = response.body()?.toMutableList()
-//                if(responseData!=null){
-//                    _listAnimals.value?.addAll(responseData)
-//                }
-
+                val responseData = response.body()?.toMutableList()
+                if(responseData!=null){
+                    _listAnimals.value?.addAll(responseData)
+                    _listAnimals.postValue(_listAnimals.value)
+                }
             }
-
 
             override fun onFailure(call: Call<MutableList<ResponseAnimal>>, t: Throwable) {
                 _refreshLoading.value = false
