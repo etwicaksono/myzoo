@@ -8,63 +8,24 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.etwicaksono.myzoo.api.ApiConfig
+import com.etwicaksono.myzoo.repository.MainRepository
 import com.etwicaksono.myzoo.responses.Animal
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AnimalsListViewModel : ViewModel() {
-    private val _listAnimals = MutableLiveData<MutableList<Animal>>()
-    val listAnimals: LiveData<MutableList<Animal>> = _listAnimals
-    private val _mainLoading = MutableLiveData<Boolean>()
-    val mainLoading: LiveData<Boolean> = _mainLoading
-    private val _refreshLoading = MutableLiveData<Boolean>()
-    val refreshLoading: LiveData<Boolean> = _refreshLoading
+class AnimalsListViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    fun init() {
-        _mainLoading.value = true
-        api.getAllAnimals().enqueue(object : Callback<MutableList<Animal>> {
-            override fun onResponse(
-                call: Call<MutableList<Animal>>,
-                response: Response<MutableList<Animal>>
-            ) {
-                _mainLoading.value = false
-                _listAnimals.postValue(response.body())
-            }
+    val errorMessage=MutableLiveData<String>()
 
-            override fun onFailure(call: Call<MutableList<Animal>>, t: Throwable) {
-                _mainLoading.value = false
-                Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
-            }
-
-        })
+    fun getAnimalList():LiveData<PagingData<Animal>>{
+        return mainRepository.getAllAnimals().cachedIn(viewModelScope)
     }
 
-    fun addMore() {
-        _refreshLoading.value = true
-        api.getAllAnimals().enqueue(object : Callback<MutableList<Animal>> {
-            override fun onResponse(
-                call: Call<MutableList<Animal>>,
-                response: Response<MutableList<Animal>>
-            ) {
-                _refreshLoading.value = false
-                _listAnimals.postValue(response.body())
-
-                val responseData = response.body()?.toMutableList()
-                if(responseData!=null){
-                    _listAnimals.value?.addAll(responseData)
-                    _listAnimals.postValue(_listAnimals.value)
-                }
-            }
-
-            override fun onFailure(call: Call<MutableList<Animal>>, t: Throwable) {
-                _refreshLoading.value = false
-                Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
-            }
-
-        })
-    }
 
     fun hasInternet(context: Context): LiveData<Boolean> {
         val result = MutableLiveData<Boolean>()
