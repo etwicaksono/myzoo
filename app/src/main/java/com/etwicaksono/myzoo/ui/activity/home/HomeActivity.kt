@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.etwicaksono.myzoo.MyViewModelFactory
 import com.etwicaksono.myzoo.api.ApiConfig
 import com.etwicaksono.myzoo.databinding.ActivityHomeBinding
@@ -28,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
         val apiService = ApiConfig.getApiService()
         val mainRepository = MainRepository(apiService)
         binding.rvAnimals.adapter = animalPagerAdapter
+        binding.rvAnimals.layoutManager = LinearLayoutManager(this)
 
         viewModel = ViewModelProvider(
             this,
