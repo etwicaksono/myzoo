@@ -25,7 +25,7 @@ class AnimalPagerAdapter :
 
     }
 
-    class ViewHolder(val view: ItemRowAnimalBinding) : RecyclerView.ViewHolder(view.root) {}
+    class ViewHolder(val view: ItemRowAnimalBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val animal = getItem(position)!!

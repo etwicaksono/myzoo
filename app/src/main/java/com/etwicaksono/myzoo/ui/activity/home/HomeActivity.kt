@@ -1,6 +1,9 @@
 package com.etwicaksono.myzoo.ui.activity.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +13,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.etwicaksono.myzoo.MyViewModelFactory
+import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.api.ApiConfig
 import com.etwicaksono.myzoo.databinding.ActivityHomeBinding
 import com.etwicaksono.myzoo.repository.MainRepository
+import com.etwicaksono.myzoo.ui.activity.AboutActivity
+import com.etwicaksono.myzoo.ui.activity.DetailActivity
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
@@ -85,6 +91,22 @@ class HomeActivity : AppCompatActivity() {
                     animalPagerAdapter.submitData(lifecycle, it)
                 }
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.about->{
+                val intent = Intent(this,AboutActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else-> super.onOptionsItemSelected(item)
         }
     }
 }
