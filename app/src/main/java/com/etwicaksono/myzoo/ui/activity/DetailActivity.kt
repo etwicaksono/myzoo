@@ -1,4 +1,4 @@
-package com.etwicaksono.myzoo.ui.activity.detail
+package com.etwicaksono.myzoo.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -27,11 +27,11 @@ class DetailActivity : AppCompatActivity() {
             tvLatinName.text = animal.latinName
             tvType.text = animal.animalType
             tvActiveTime.text = animal.activeTime
-            tvLengthMin.text = "${animal?.lengthMin} ft"
-            tvLengthMax.text = "${animal?.lengthMax} ft"
-            tvWeightMin.text = "${animal?.weightMin} lbs"
-            tvWeightMax.text = "${animal?.weightMax} lbs"
-            tvLifespan.text = animal?.lifespan + if(animal?.lifespan?.toInt()?.equals(1) == true) "years" else "year"
+            tvLengthMin.text = "${animal.lengthMin} ft"
+            tvLengthMax.text = "${animal.lengthMax} ft"
+            tvWeightMin.text = "${animal.weightMin} lbs"
+            tvWeightMax.text = "${animal.weightMax} lbs"
+            tvLifespan.text = animal.lifespan + if(animal.lifespan?.toInt()?.equals(1) == true) "years" else "year"
             tvHabitat.text = animal.habitat
             tvDiet.text = animal.diet
             tvGeoRange.text = animal.geoRange

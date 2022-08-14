@@ -17,7 +17,7 @@
         android:theme="@style/Theme.MyZoo"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.detail.DetailActivity"
+            android:name=".ui.activity.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.home.HomeActivity"

@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.databinding.ItemRowAnimalBinding
 import com.etwicaksono.myzoo.responses.Animal
-import com.etwicaksono.myzoo.ui.activity.detail.DetailActivity
+import com.etwicaksono.myzoo.ui.activity.DetailActivity
 
 class AnimalPagerAdapter :
     PagingDataAdapter<Animal, AnimalPagerAdapter.ViewHolder>(AnimalComparator) {
