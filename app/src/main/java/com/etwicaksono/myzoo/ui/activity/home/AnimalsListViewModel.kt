@@ -4,40 +4,24 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.etwicaksono.myzoo.api.ApiConfig
-import com.etwicaksono.myzoo.responses.ResponseAnimal
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.etwicaksono.myzoo.repository.MainRepository
+import com.etwicaksono.myzoo.responses.Animal
 
-class AnimalsListViewModel : ViewModel() {
-    private val _listAnimals = MutableLiveData<List<ResponseAnimal>>()
-    val listAnimals: LiveData<List<ResponseAnimal>> = _listAnimals
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+class AnimalsListViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    fun getAnimals() {
-        _isLoading.value = true
-        api.getAllAnimals().enqueue(object : Callback<List<ResponseAnimal>> {
-            override fun onResponse(
-                call: Call<List<ResponseAnimal>>,
-                response: Response<List<ResponseAnimal>>
-            ) {
-                _isLoading.value=false
-                _listAnimals.postValue(response.body())
-            }
+    val errorMessage=MutableLiveData<String>()
 
-            override fun onFailure(call: Call<List<ResponseAnimal>>, t: Throwable) {
-                _isLoading.value=false
-                Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
-            }
-
-        })
+    fun getAnimalList():LiveData<PagingData<Animal>>{
+        return mainRepository.getAllAnimals().cachedIn(viewModelScope)
     }
+
 
     fun hasInternet(context: Context): LiveData<Boolean> {
         val result = MutableLiveData<Boolean>()

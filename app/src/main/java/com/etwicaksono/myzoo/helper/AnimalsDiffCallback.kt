@@ -1,11 +1,11 @@
 package com.etwicaksono.myzoo.helper
 
 import androidx.recyclerview.widget.DiffUtil
-import com.etwicaksono.myzoo.responses.ResponseAnimal
+import com.etwicaksono.myzoo.responses.Animal
 
 class AnimalsDiffCallback(
-    private val mOldAnimalsList: List<ResponseAnimal>,
-    private val mNewAnimalsList: List<ResponseAnimal>
+    private val mOldAnimalsList: List<Animal>,
+    private val mNewAnimalsList: List<Animal>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return mOldAnimalsList.size
