@@ -13,7 +13,7 @@ import com.etwicaksono.myzoo.databinding.ActivityHomeBinding
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var homeAdapter: HomeAdapter
+    private lateinit var animalPagerAdapter: AnimalPagerAdapter
     private val viewModel: AnimalsListViewModel by viewModels()
     private var isLoading = false
 
@@ -24,9 +24,9 @@ class HomeActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        homeAdapter = HomeAdapter()
+        animalPagerAdapter = AnimalPagerAdapter()
         binding.rvAnimals.apply {
-            this.adapter = homeAdapter
+            this.adapter = animalPagerAdapter
             this.layoutManager = layoutManager
             addItemDecoration(itemDecoration)
 
@@ -47,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
             init()
 
             listAnimals.observe(this@HomeActivity) {
-                if (it != null && it.isNotEmpty()) homeAdapter.setAnimalsListData(
+                if (it != null && it.isNotEmpty()) animalPagerAdapter.setAnimalsListData(
                     it
                 )
             }
