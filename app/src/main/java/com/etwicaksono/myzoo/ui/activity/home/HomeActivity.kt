@@ -26,7 +26,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.centerProgressBar.isVisible = true
 
         val apiService = ApiConfig.getApiService()
         val mainRepository = MainRepository(apiService)
