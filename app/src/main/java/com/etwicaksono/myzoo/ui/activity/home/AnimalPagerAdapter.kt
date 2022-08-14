@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.databinding.ItemRowAnimalBinding
 import com.etwicaksono.myzoo.responses.Animal
-import com.etwicaksono.myzoo.ui.activity.detail.DetailActivity
+import com.etwicaksono.myzoo.ui.activity.DetailActivity
 
 class AnimalPagerAdapter :
     PagingDataAdapter<Animal, AnimalPagerAdapter.ViewHolder>(AnimalComparator) {
@@ -25,7 +25,7 @@ class AnimalPagerAdapter :
 
     }
 
-    class ViewHolder(val view: ItemRowAnimalBinding) : RecyclerView.ViewHolder(view.root) {}
+    class ViewHolder(val view: ItemRowAnimalBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val animal = getItem(position)!!

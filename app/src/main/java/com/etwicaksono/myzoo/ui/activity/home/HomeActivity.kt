@@ -1,6 +1,9 @@
 package com.etwicaksono.myzoo.ui.activity.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,16 +13,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.etwicaksono.myzoo.MyViewModelFactory
+import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.api.ApiConfig
 import com.etwicaksono.myzoo.databinding.ActivityHomeBinding
 import com.etwicaksono.myzoo.repository.MainRepository
+import com.etwicaksono.myzoo.ui.activity.AboutActivity
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private val animalPagerAdapter= AnimalPagerAdapter()
+    private val animalPagerAdapter = AnimalPagerAdapter()
     private lateinit var viewModel: AnimalsListViewModel
+    private var firstLoading = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,14 +58,19 @@ class HomeActivity : AppCompatActivity() {
         }
 
         animalPagerAdapter.addLoadStateListener { loadState ->
-//                        show empty list
+
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading
             ) {
-                binding.centerProgressBar.isVisible = true
+                if (firstLoading) {
+                    binding.centerProgressBar.isVisible = true
+                } else {
+                    binding.bottomProgressBar.isVisible = true
+                }
             } else {
+                firstLoading = false
                 binding.centerProgressBar.isVisible = false
-//                if we have an error, show a toast
+                binding.bottomProgressBar.isVisible = false
                 val errorState = when {
                     loadState.append is LoadState.Error -> loadState.append as LoadState.Error
                     loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
@@ -79,6 +90,22 @@ class HomeActivity : AppCompatActivity() {
                     animalPagerAdapter.submitData(lifecycle, it)
                 }
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.about -> {
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

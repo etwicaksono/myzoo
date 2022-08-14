@@ -12,4 +12,10 @@
     <string name="habitat">Habitat</string>
     <string name="diet">Diet</string>
     <string name="geo_range">Geo Range</string>
+    <string name="about">About</string>
+    <string name="user_name">Eko Teguh Wicaksono</string>
+    <string name="user_email">echotechno007@gmail.com</string>
+    <string name="user_github">\@etwicaksono</string>
+    <string name="user_location">Jakarta</string>
+    <string name="credit">Credit : zoo-animal-api.herokuapp.com</string>
 </resources>
