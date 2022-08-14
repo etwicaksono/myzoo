@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var animalPagerAdapter: AnimalPagerAdapter
+    private val animalPagerAdapter= AnimalPagerAdapter()
     private lateinit var viewModel: AnimalsListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
