@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.databinding.ItemRowAnimalBinding
 import com.etwicaksono.myzoo.helper.AnimalsDiffCallback
-import com.etwicaksono.myzoo.responses.ResponseAnimal
+import com.etwicaksono.myzoo.responses.Animal
 import com.etwicaksono.myzoo.ui.activity.detail.DetailActivity
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
@@ -18,7 +18,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         val binding = ItemRowAnimalBinding.bind(view)
     }
 
-    private val listAnimals = ArrayList<ResponseAnimal>()
+    private val listAnimals = ArrayList<Animal>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -51,7 +51,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         return listAnimals.size
     }
 
-    fun setAnimalsListData(listAnimals: List<ResponseAnimal>) {
+    fun setAnimalsListData(listAnimals: List<Animal>) {
         val diffCallback = AnimalsDiffCallback(this.listAnimals, listAnimals)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.listAnimals.clear()

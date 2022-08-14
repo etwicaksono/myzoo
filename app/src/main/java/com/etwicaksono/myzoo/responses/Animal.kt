@@ -4,8 +4,10 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+const val NETWORK_PAGE_SIZE=10
+
 @Parcelize
-data class ResponseAnimal(
+data class Animal(
 
 	@field:SerializedName("weight_min")
 	val weightMin: String? = null,

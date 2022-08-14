@@ -9,14 +9,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.etwicaksono.myzoo.api.ApiConfig
-import com.etwicaksono.myzoo.responses.ResponseAnimal
+import com.etwicaksono.myzoo.responses.Animal
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class AnimalsListViewModel : ViewModel() {
-    private val _listAnimals = MutableLiveData<MutableList<ResponseAnimal>>()
-    val listAnimals: LiveData<MutableList<ResponseAnimal>> = _listAnimals
+    private val _listAnimals = MutableLiveData<MutableList<Animal>>()
+    val listAnimals: LiveData<MutableList<Animal>> = _listAnimals
     private val _mainLoading = MutableLiveData<Boolean>()
     val mainLoading: LiveData<Boolean> = _mainLoading
     private val _refreshLoading = MutableLiveData<Boolean>()
@@ -24,16 +24,16 @@ class AnimalsListViewModel : ViewModel() {
 
     fun init() {
         _mainLoading.value = true
-        api.getAllAnimals().enqueue(object : Callback<MutableList<ResponseAnimal>> {
+        api.getAllAnimals().enqueue(object : Callback<MutableList<Animal>> {
             override fun onResponse(
-                call: Call<MutableList<ResponseAnimal>>,
-                response: Response<MutableList<ResponseAnimal>>
+                call: Call<MutableList<Animal>>,
+                response: Response<MutableList<Animal>>
             ) {
                 _mainLoading.value = false
                 _listAnimals.postValue(response.body())
             }
 
-            override fun onFailure(call: Call<MutableList<ResponseAnimal>>, t: Throwable) {
+            override fun onFailure(call: Call<MutableList<Animal>>, t: Throwable) {
                 _mainLoading.value = false
                 Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
             }
@@ -43,10 +43,10 @@ class AnimalsListViewModel : ViewModel() {
 
     fun addMore() {
         _refreshLoading.value = true
-        api.getAllAnimals().enqueue(object : Callback<MutableList<ResponseAnimal>> {
+        api.getAllAnimals().enqueue(object : Callback<MutableList<Animal>> {
             override fun onResponse(
-                call: Call<MutableList<ResponseAnimal>>,
-                response: Response<MutableList<ResponseAnimal>>
+                call: Call<MutableList<Animal>>,
+                response: Response<MutableList<Animal>>
             ) {
                 _refreshLoading.value = false
                 _listAnimals.postValue(response.body())
@@ -58,7 +58,7 @@ class AnimalsListViewModel : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<MutableList<ResponseAnimal>>, t: Throwable) {
+            override fun onFailure(call: Call<MutableList<Animal>>, t: Throwable) {
                 _refreshLoading.value = false
                 Log.e(TAG, "getAnimals onFailure: ${t.message.toString()}")
             }

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.databinding.ActivityDetailBinding
-import com.etwicaksono.myzoo.responses.ResponseAnimal
+import com.etwicaksono.myzoo.responses.Animal
 
 class DetailActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val animalList = intent.getParcelableArrayListExtra<ResponseAnimal>("animalList")
+        val animalList = intent.getParcelableArrayListExtra<Animal>("animalList")
         val position = intent.getIntExtra("position", 0)
         val animal = animalList?.get(position)
 
