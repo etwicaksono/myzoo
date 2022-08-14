@@ -22,7 +22,6 @@ class AnimalsListViewModel(private val mainRepository: MainRepository) : ViewMod
         return mainRepository.getAllAnimals().cachedIn(viewModelScope)
     }
 
-
     fun hasInternet(context: Context): LiveData<Boolean> {
         val result = MutableLiveData<Boolean>()
         result.value = false
@@ -46,8 +45,4 @@ class AnimalsListViewModel(private val mainRepository: MainRepository) : ViewMod
         }
     }
 
-    companion object {
-        private val TAG = AnimalsListViewModel::class.java.simpleName
-        private val api = ApiConfig.getApiService()
-    }
 }
