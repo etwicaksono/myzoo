@@ -15,10 +15,14 @@ class AnimalPagingSource(private val apiService: ApiService) : PagingSource<Int,
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Animal> {
         return try {
-            val position = params.key?:1
-            val response =apiService.getAllAnimals()
-            LoadResult.Page(data = response.body()!!, prevKey = if(position==1)null else position-1, nextKey = position+1)
-        }catch (e:Exception){
+            val position = params.key ?: 1
+            val response = apiService.getAllAnimals()
+            LoadResult.Page(
+                data = response.body()!!,
+                prevKey = if (position == 1) null else position - 1,
+                nextKey = position + 1
+            )
+        } catch (e: Exception) {
             LoadResult.Error(e)
         }
     }

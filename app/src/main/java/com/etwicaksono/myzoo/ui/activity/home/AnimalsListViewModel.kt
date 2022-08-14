@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,9 +13,6 @@ import androidx.paging.cachedIn
 import com.etwicaksono.myzoo.api.ApiConfig
 import com.etwicaksono.myzoo.repository.MainRepository
 import com.etwicaksono.myzoo.responses.Animal
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AnimalsListViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
