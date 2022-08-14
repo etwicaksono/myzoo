@@ -18,7 +18,6 @@ import com.etwicaksono.myzoo.api.ApiConfig
 import com.etwicaksono.myzoo.databinding.ActivityHomeBinding
 import com.etwicaksono.myzoo.repository.MainRepository
 import com.etwicaksono.myzoo.ui.activity.AboutActivity
-import com.etwicaksono.myzoo.ui.activity.DetailActivity
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
@@ -100,13 +99,13 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
-            R.id.about->{
-                val intent = Intent(this,AboutActivity::class.java)
+        return when (item.itemId) {
+            R.id.about -> {
+                val intent = Intent(this, AboutActivity::class.java)
                 startActivity(intent)
                 true
             }
-            else-> super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

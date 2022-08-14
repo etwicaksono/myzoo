@@ -31,7 +31,9 @@ class DetailActivity : AppCompatActivity() {
             tvLengthMax.text = "${animal.lengthMax} ft"
             tvWeightMin.text = "${animal.weightMin} lbs"
             tvWeightMax.text = "${animal.weightMax} lbs"
-            tvLifespan.text = animal.lifespan + if(animal.lifespan?.toInt()?.equals(1) == true) "years" else "year"
+            tvLifespan.text = animal.lifespan + if (animal.lifespan?.toInt()
+                    ?.equals(1) == true
+            ) "years" else "year"
             tvHabitat.text = animal.habitat
             tvDiet.text = animal.diet
             tvGeoRange.text = animal.geoRange
