@@ -12,11 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.etwicaksono.myzoo.MyViewModelFactory
+import com.etwicaksono.myzoo.AnimalViewModelFactory
 import com.etwicaksono.myzoo.R
 import com.etwicaksono.myzoo.api.ApiConfig
 import com.etwicaksono.myzoo.databinding.ActivityHomeBinding
-import com.etwicaksono.myzoo.repository.MainRepository
+import com.etwicaksono.myzoo.repository.AnimalRepository
 import com.etwicaksono.myzoo.ui.activity.AboutActivity
 import kotlinx.coroutines.launch
 
@@ -33,13 +33,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val apiService = ApiConfig.getApiService()
-        val mainRepository = MainRepository(apiService)
+        val animalRepository = AnimalRepository(apiService)
         binding.rvAnimals.adapter = animalPagerAdapter
         binding.rvAnimals.layoutManager = LinearLayoutManager(this)
 
         viewModel = ViewModelProvider(
             this,
-            MyViewModelFactory(mainRepository)
+            AnimalViewModelFactory(animalRepository)
         )[AnimalsListViewModel::class.java]
 
         viewModel.apply {

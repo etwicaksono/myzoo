@@ -10,7 +10,7 @@ import com.etwicaksono.myzoo.paging.AnimalPagingSource
 import com.etwicaksono.myzoo.responses.Animal
 import com.etwicaksono.myzoo.responses.NETWORK_PAGE_SIZE
 
-class MainRepository constructor(private val apiService: ApiService) {
+class AnimalRepository constructor(private val apiService: ApiService) {
     fun getAllAnimals(): LiveData<PagingData<Animal>> {
         return Pager(
             config = PagingConfig(

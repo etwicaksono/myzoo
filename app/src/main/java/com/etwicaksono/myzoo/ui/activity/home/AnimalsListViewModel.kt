@@ -10,15 +10,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.etwicaksono.myzoo.repository.MainRepository
+import com.etwicaksono.myzoo.repository.AnimalRepository
 import com.etwicaksono.myzoo.responses.Animal
 
-class AnimalsListViewModel(private val mainRepository: MainRepository) : ViewModel() {
+class AnimalsListViewModel(private val animalRepository: AnimalRepository) : ViewModel() {
 
     val errorMessage = MutableLiveData<String>()
 
     fun getAnimalList(): LiveData<PagingData<Animal>> {
-        return mainRepository.getAllAnimals().cachedIn(viewModelScope)
+        return animalRepository.getAllAnimals().cachedIn(viewModelScope)
     }
 
     fun hasInternet(context: Context): LiveData<Boolean> {

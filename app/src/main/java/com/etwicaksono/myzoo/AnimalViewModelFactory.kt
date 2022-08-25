@@ -2,10 +2,10 @@ package com.etwicaksono.myzoo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.etwicaksono.myzoo.repository.MainRepository
+import com.etwicaksono.myzoo.repository.AnimalRepository
 import com.etwicaksono.myzoo.ui.activity.home.AnimalsListViewModel
 
-class MyViewModelFactory constructor(private val repository: MainRepository) :
+class AnimalViewModelFactory constructor(private val repository: AnimalRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(AnimalsListViewModel::class.java)) {
