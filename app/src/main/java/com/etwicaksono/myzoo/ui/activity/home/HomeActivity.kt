@@ -57,7 +57,7 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        animalPagerAdapter.addLoadStateListener { loadState ->
+        /*animalPagerAdapter.addLoadStateListener { loadState ->
 
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading
@@ -82,7 +82,7 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
 
-        }
+        }*/
 
         lifecycleScope.launch {
             viewModel.getAnimalList().observe(this@HomeActivity) {
