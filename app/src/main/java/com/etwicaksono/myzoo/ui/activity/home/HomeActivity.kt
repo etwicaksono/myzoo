@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.etwicaksono.myzoo.AnimalViewModelFactory
 import com.etwicaksono.myzoo.R
@@ -34,7 +35,8 @@ class HomeActivity : AppCompatActivity() {
 
         val apiService = ApiConfig.getApiService()
         val animalRepository = AnimalRepository(apiService)
-        binding.rvAnimals.adapter = animalPagerAdapter
+        binding.rvAnimals.adapter =
+            animalPagerAdapter.withLoadStateFooter(AnimalLoadStateAdapter(animalPagerAdapter::retry))
         binding.rvAnimals.layoutManager = LinearLayoutManager(this)
 
         viewModel = ViewModelProvider(
@@ -57,32 +59,16 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        /*animalPagerAdapter.addLoadStateListener { loadState ->
+        animalPagerAdapter.addLoadStateListener { loadState ->
 
-            if (loadState.refresh is LoadState.Loading ||
-                loadState.append is LoadState.Loading
+            binding.centerProgressBar.isVisible = firstLoading
+            if (loadState.refresh is LoadState.NotLoading ||
+                loadState.append is LoadState.NotLoading
             ) {
-                if (firstLoading) {
-                    binding.centerProgressBar.isVisible = true
-                } else {
-                    binding.bottomProgressBar.isVisible = true
-                }
-            } else {
                 firstLoading = false
-                binding.centerProgressBar.isVisible = false
-                binding.bottomProgressBar.isVisible = false
-                val errorState = when {
-                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
-                    loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
-                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
-                    else -> null
-                }
-                errorState?.let {
-                    Toast.makeText(this, it.error.toString(), Toast.LENGTH_LONG).show()
-                }
             }
 
-        }*/
+        }
 
         lifecycleScope.launch {
             viewModel.getAnimalList().observe(this@HomeActivity) {

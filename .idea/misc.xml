@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Data/Project/AndroidStudio/Android-Fundamental-ID-Camp/myZoo/app/src/main/res/layout/item_row_animal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Data/Project/AndroidStudio/Android-Fundamental-ID-Camp/myZoo/app/src/main/res/layout/item_row_loading.xml" value="0.33" />
         <entry key="..\:/Users/Padepokan79/AndroidStudioProjects/MyZoo/app/src/main/res/drawable/ic_info_24.xml" value="0.1955" />
         <entry key="..\:/Users/Padepokan79/AndroidStudioProjects/MyZoo/app/src/main/res/layout/activity_about.xml" value="0.22" />
         <entry key="..\:/Users/Padepokan79/AndroidStudioProjects/MyZoo/app/src/main/res/layout/activity_detail.xml" value="0.25" />
