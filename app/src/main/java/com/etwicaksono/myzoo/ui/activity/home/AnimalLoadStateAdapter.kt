@@ -33,11 +33,9 @@ class AnimalLoadStateAdapter(private val retry: () -> Unit) :
         }
     }
 
-    override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
-        TODO("Not yet implemented")
-    }
+    override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) =
+        holder.bind(loadState)
 
-    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
-        TODO("Not yet implemented")
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder =
+        LoadStateViewHolder(parent, retry)
 }
